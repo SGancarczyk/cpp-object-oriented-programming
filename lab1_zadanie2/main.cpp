@@ -4,7 +4,7 @@
 
 
 // Conversion map between m2 and other Units
-std::unordered_map<std::string, double> conversionFactors = {
+std::unordered_map<std::string, double> conversionFactors = {   // This method of map creating required newer compiler version, enforced in CMakeLists.txt file
     {"mm2", 0.000001},   // 1 mm² = 0.000001 m²
     {"cm2", 0.0001},     
     {"dm2", 0.01},       
