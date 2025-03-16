@@ -41,7 +41,7 @@ int main()
     double area;
     int previous_choice;
 
-    previous_choice = 4;    // By default keybort are input is in square meters
+    previous_choice = 4;    // Default input unit - square meters
     std::cout << "Input the size of the area in square meters: "; 
     std::cin >> area;
     do{
