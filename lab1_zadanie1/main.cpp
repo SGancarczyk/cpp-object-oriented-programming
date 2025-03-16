@@ -101,4 +101,25 @@ int main()
    std::cout << newdate.getMonth() << '.';
    std::cout << newdate.getYear() << std::endl;
    std::cout << newdate.getDate() << std::endl;
+   try {
+      Date d1(15, Month::March, 2023);
+      d1.setDay(32);
+      d1.getDate();
+   } catch (const std::exception& e) {
+      std::cerr << "Error: " << e.what() << std::endl;
+   }
+   try {
+      Date d1(31, Month::March, 2023);
+      d1.setMonth(Month::February); 
+      d1.getDate();
+   } catch (const std::exception& e) {
+      std::cerr << "Error: " << e.what() << std::endl;
+   }
+   try {
+      Date d1(15, Month::March, 2023);
+      d1.setYear(0);
+      d1.getDate();
+   } catch (const std::exception& e) {
+      std::cerr << "Error: " << e.what() << std::endl;
+   }
  };
