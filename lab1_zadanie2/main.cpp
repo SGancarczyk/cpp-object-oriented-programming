@@ -23,8 +23,8 @@ std::unordered_map<int, std::string> selectionTable = {
     {4, "m2"},         
     {5, "km2"},  
     {6, "a"},        
-    {7, "ha"},     
-    {8, "acre"}    
+    {7, "acre"},     
+    {8, "ha"}    
 };
 
 double convertArea(double value, std::string fromUnit, std::string toUnit) {
@@ -40,9 +40,10 @@ int main()
     int choice;
     double area;
     int previous_choice;
-
-    previous_choice = 4;    // Default input unit - square meters
-    std::cout << "Input the size of the area in square meters: "; 
+    std::cout << "Units: 1. mm2, 2. cm2, 3. dm2, 4. m2, 5. km2, 6. ar, 7. ac, 8.ha" << std::endl;
+    std::cout << "Select default unit(number): ";
+    std::cin >> previous_choice;
+    std::cout << std::endl << "Input size: ";
     std::cin >> area;
     do{
         std::cout << "Select conversion of area units: " << std::endl;
