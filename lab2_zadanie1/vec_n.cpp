@@ -7,6 +7,9 @@ vec_n::vec_n(size_t n) : elements(n, std::numeric_limits<double>::quiet_NaN()), 
 // Constructor initializing a vector with given values
 vec_n::vec_n(const std::vector<double>& values) : elements(values), is_defined(true) {}
 
+// Destructor, cleaning memory after usage
+vec_n::~vec_n() {}
+
 // Checking if a vector is fully defined
 void vec_n::is_fully_defined() {
     for (double val : elements) {
@@ -22,6 +25,7 @@ void vec_n::is_fully_defined() {
 size_t vec_n::size(void) const {
     return elements.size();
 }
+
 
 // Vector addition operator
 vec_n vec_n::operator+(const vec_n& v) const {
@@ -86,7 +90,7 @@ bool vec_n::is_parallel(const vec_n& v) const { // first const guarantees that g
         throw std::invalid_argument("One of the vectors isn't fully defined.");
     }
 
-    // Check if the vectors are scalar multiples of each other
+
     double ratio = elements[0] / v.elements[0];
     for (size_t i = 1; i < elements.size(); i++) {
         if (v.elements[i] == 0 || elements[i] / v.elements[i] != ratio) {
@@ -96,21 +100,7 @@ bool vec_n::is_parallel(const vec_n& v) const { // first const guarantees that g
     return true;
 }
 
-
-vec_n vec_n::add(const vec_n& v) const{
-    if (elements.size() != v.size()) {
-        throw std::invalid_argument("Vectors have different sizes!");
-    }
-    if (!is_defined || !v.is_defined) {
-        throw std::invalid_argument("One of the vectors isn't fully defined.");
-    }
-    std::vector<double> result(elements.size());
-    for (size_t i = 0; i < elements.size(); i++) {
-        result[i] = elements[i] + v.elements[i];
-    }
-    return result;
-}
-
+// Returns vector length
 double vec_n::length(void) const{
     if (!is_defined) {
         throw std::invalid_argument("One of the vectors isn't fully defined.");
@@ -123,6 +113,7 @@ double vec_n::length(void) const{
     return sqrt(sum_of_squares);
 }
 
+// Compares vectors length, returns 1 if argument given is longer(vec_n), 0 if equal, -1 if shorter
 int vec_n::compare(const vec_n& v){
     if (!is_defined) {
         throw std::invalid_argument("One of the vectors isn't fully defined.");
@@ -136,6 +127,7 @@ int vec_n::compare(const vec_n& v){
     return 0;
 }
 
+// Returns vector element by index
 double vec_n::get_element(const int elem_no) const{
     if (!is_defined) {
         throw std::invalid_argument("One of the vectors isn't fully defined.");
@@ -146,6 +138,7 @@ double vec_n::get_element(const int elem_no) const{
     return elements[elem_no];
 }
 
+// Returns dot product of two vectors
 double vec_n::dot_product(const vec_n& v) const{
     if (elements.size() != v.size()) {
         throw std::invalid_argument("Vectors have different sizes!");
@@ -185,3 +178,19 @@ vec_n vec_n::loadFromFile(const std::string& filename) {
     inFile.close();
     return vec_n(values);
 }
+
+
+//
+//  vec_n vec_n::add(const vec_n& v) const{
+//      if (elements.size() != v.size()) {
+//          throw std::invalid_argument("Vectors have different sizes!");
+//      }
+//      if (!is_defined || !v.is_defined) {
+//          throw std::invalid_argument("One of the vectors isn't fully defined.");
+//      }
+//      std::vector<double> result(elements.size());
+//      for (size_t i = 0; i < elements.size(); i++) {
+//          result[i] = elements[i] + v.elements[i];
+//      }
+//      return result;
+//  }
