@@ -1,4 +1,3 @@
-// main.cpp
 #include "vec_n.hpp"
 
 int main() {
@@ -18,6 +17,15 @@ int main() {
 
     vec_n v4 = v2.scalar_multiply(2.0);  // Multiplying by a value
     v4.print();
+
+    // Save vector to file
+    v2.saveToFile("vector.txt");
+    std::cout << "Vector saved to file." << std::endl;
+
+    // Load vector from file
+    vec_n v5 = vec_n::loadFromFile("vector.txt");
+    std::cout << "Vector loaded from file: ";
+    v5.print();
 
     return 0;
 }

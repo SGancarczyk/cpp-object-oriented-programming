@@ -95,3 +95,93 @@ bool vec_n::is_parallel(const vec_n& v) const { // first const guarantees that g
     }
     return true;
 }
+
+
+vec_n vec_n::add(const vec_n& v) const{
+    if (elements.size() != v.size()) {
+        throw std::invalid_argument("Vectors have different sizes!");
+    }
+    if (!is_defined || !v.is_defined) {
+        throw std::invalid_argument("One of the vectors isn't fully defined.");
+    }
+    std::vector<double> result(elements.size());
+    for (size_t i = 0; i < elements.size(); i++) {
+        result[i] = elements[i] + v.elements[i];
+    }
+    return result;
+}
+
+double vec_n::length(void) const{
+    if (!is_defined) {
+        throw std::invalid_argument("One of the vectors isn't fully defined.");
+    }
+    double sum_of_squares;
+    sum_of_squares = 0;
+    for (size_t i = 0; i < elements.size(); i++){
+        sum_of_squares += (elements[i] * elements[i]);
+    }
+    return sqrt(sum_of_squares);
+}
+
+int vec_n::compare(const vec_n& v){
+    if (!is_defined) {
+        throw std::invalid_argument("One of the vectors isn't fully defined.");
+    }
+    if (length() > v.length()){
+        return -1;
+    }
+    else if(length() < v.length()){
+        return 1;
+    }
+    return 0;
+}
+
+double vec_n::get_element(const int elem_no) const{
+    if (!is_defined) {
+        throw std::invalid_argument("One of the vectors isn't fully defined.");
+    }
+    if (elem_no > size() - 1){
+        throw std::out_of_range("No such dimension in this vector");
+    }
+    return elements[elem_no];
+}
+
+double vec_n::dot_product(const vec_n& v) const{
+    if (elements.size() != v.size()) {
+        throw std::invalid_argument("Vectors have different sizes!");
+    }
+    if (!is_defined || !v.is_defined) {
+        throw std::invalid_argument("One of the vectors isn't fully defined.");
+    }
+    double d_product;
+    d_product = 0;
+    for (size_t i = 0; i < elements.size(); i++){
+        d_product += elements[i] * v.elements[i];
+    }
+    return d_product;
+}
+
+void vec_n::saveToFile(const std::string& filename) const {
+    std::ofstream outFile(filename);
+    if (!outFile) {
+        throw std::runtime_error("Could not open file for writing.");
+    }
+    for (double val : elements) {
+        outFile << val << " ";
+    }
+    outFile.close();
+}
+
+vec_n vec_n::loadFromFile(const std::string& filename) {
+    std::ifstream inFile(filename);
+    if (!inFile) {
+        throw std::runtime_error("Could not open file for reading.");
+    }
+    std::vector<double> values;
+    double val;
+    while (inFile >> val) {
+        values.push_back(val);
+    }
+    inFile.close();
+    return vec_n(values);
+}
