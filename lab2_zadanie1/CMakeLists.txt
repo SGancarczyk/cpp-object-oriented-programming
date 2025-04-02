@@ -13,7 +13,7 @@ set(PROJECT_SOURCES vec_n.cpp vec_n.hpp)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Tworzenie pliku wykonywalnego
+
 add_executable(proi-lab2 main.cpp ${PROJECT_SOURCES})
 add_executable(proi-lab2-unittests unittests.cpp ${PROJECT_SOURCES})
 target_link_libraries(proi-lab2-unittests PUBLIC gtest_main)

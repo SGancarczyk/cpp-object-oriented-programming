@@ -15,7 +15,7 @@ void vec_n::is_fully_defined() {
     for (double val : elements) {
         if (std::isnan(val)) {
             is_defined = false;
-            return;  // No need to continue checking once NaN is found
+            return;
         }
     }
     is_defined = true;  // Set to true if no NaN found
