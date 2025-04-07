@@ -21,5 +21,4 @@ public:
     bool operator==(const SparseVec &v) const;
     friend std::ostream& operator<<(std::ostream& os, const SparseVec& vec);
     friend std::istream& operator>>(std::ostream& is, SparseVec& vec);
-
 };
