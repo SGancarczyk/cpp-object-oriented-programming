@@ -33,7 +33,7 @@ int main() {
     Vectors.push_back(b);
     Vectors.push_back(c);
 
-    std::sort(Vectors.begin(), Vectors.end()); // użyje operator<
+    std::sort(Vectors.begin(), Vectors.end());
 
     std::cout << "Vectors sorted ascending, by length:\n";
     for (const auto& w : Vectors) {
