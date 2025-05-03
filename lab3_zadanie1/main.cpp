@@ -24,9 +24,9 @@ int main() {
 
     std::vector<SparseVec> Vectors;
 
-    SparseVec a(3, 0.0), b(3, 0.0), c(3, 0.0);
+    SparseVec a(3, 0.0), b(3, 9.0), c(3, 0.0);
     a[0] = 3.0; // len = 3
-    b[0] = 4.0; b[1] = 3.0; // len = 5
+    b[0] = 4.5; b[1] = 3.0; // len = 5
     c[0] = 1.0; // len = 1
 
     Vectors.push_back(a);

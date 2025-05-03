@@ -13,7 +13,7 @@ private:
 public:
     SparseVec(size_t s, double def_val=0.0);
     SparseVec(const SparseVec& v);
-    double operator[](std::size_t idx) const; //  According to script operator[] should return SparseVec object, but i dont understand how would it work, moreover whats the difference between const version
+    double operator[](std::size_t idx) const;
     class ProxyReference {
         SparseVec& parent;
         std::size_t index;
