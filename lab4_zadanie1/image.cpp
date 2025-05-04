@@ -4,7 +4,7 @@
 Image::Image(int w, int h) : width(w), height(h) {}
 
 void Image::addElement(std::unique_ptr<GraphicObject> element) {
-    elements.push_back(std::move(element)); // przenosimy własność do wektora
+    elements.push_back(std::move(element));
 }
 
 std::string Image::toSVG() const {
