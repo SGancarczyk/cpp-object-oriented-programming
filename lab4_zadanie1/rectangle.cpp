@@ -3,7 +3,7 @@
 
 
 Rectangle::Rectangle(double x, double y, double h, double w,  const std::string& fc, const std::string& sc, double sw)
-    :   GraphicObject(fc, sc, sw), topLeft(x, y), height(h), width(w) {}
+    :   topLeft(x, y), height(h), width(w), GraphicObject(fc, sc, sw) {}
 
 std::string Rectangle::toSVG() const{
     std::ostringstream oss;

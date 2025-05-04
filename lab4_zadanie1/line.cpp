@@ -1,8 +1,8 @@
 #include "line.hpp"
-#include "sstream"
+#include <sstream>
 
-Line::Line(double sx, double sy, double ex, double ey, const std::string& fc, const std::string& sc, double sw)
-    : start(sx, sy), end(ex, ey), GraphicObject(fc, sc, sw) {}
+Line::Line(double sx, double sy, double ex, double ey, const std::string& sc, double sw)
+    : start(sx, sy), end(ex, ey), GraphicObject("none", sc, sw) {}
 
 std::string Line::toSVG() const{
     std::ostringstream oss;

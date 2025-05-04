@@ -4,7 +4,7 @@
 #include "point.hpp"
 #include <string>
 
-class Rectangle : GraphicObject{
+class Rectangle : public GraphicObject{
 private:
     Point<double> topLeft;
     double height;
